@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>CMPE172</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+	<style type="text/css">
+	.custom {
+		width: 78px !important;
+	 	margin-top:20px; }
+	.panel.blue { background-color: blue }
+	.panel.green { background-color: green }
+
+	.server-action-menu {
+		background-color: transparent;
+		background-image: linear-gradient(to bottom, rgba(30, 87, 153, 0.2) 0%, rgba(125, 185, 232, 0) 100%);
+		background-repeat: repeat;
+		border-radius:10px;
+	}
+
+	.info-panel {
+		padding: 4px;
+	}
+
+	#detail {margin-bottom:5px;}
+
+</style>
+
+</head>
+<body>
+	
+
+
+	<div class="container">	
+		<div class="jumbotron">
+			<h1 style="color:rgb(29, 161, 242)"><i class="fab fa-twitter"></i>Twitter App for 172</h1>
+			<form>
+				<p style="color:rgb(29, 161, 242)"><output form="numform" type="body" name="x" for="a b">Account Name</output> </p>
+				<input type="button" class="btn btn-info btn-xs" style="background-color:rgb(29, 161, 242)" value="Get Account Name" onclick="window.location.href='http://localhost:8080/twitterwebapp/GetUserName'" />
+			</form>
+		</div>
+
+		<!-- first row to get twet and find tweet -->
+		<div class="container-fluid">
+
+			<h4 align="center" style="color:rgb(29, 161, 242)"> <strong>Get your Tweet, Followers and Trend</strong></h4>
+			<div class="row server-action-menu">	
+				<!--Get Tweet Form  -->
+				<form>
+					<div class="col-xs-1">	
+						<input type="button" class="btn btn-info btn-xs custom" value="Get Tweet" onclick="window.location.href='http://localhost:8080/twitterwebapp/GetTweet'" />				
+					</div>	
+					<div class="col-xs-2" style="border-width: 20px">	
+						<br>
+						<output  type="body">Get Tweet Output</output>	
+					</div>
+				</form>
+
+				<div class="col-xs-1"></div>
+
+				<!-- Get Follower Form -->
+				<form>
+					<div class="col-xs-1">	
+						<input type="button" class="btn btn-info btn-xs custom" value="Get Follower" onclick="window.location.href='http://localhost:8080/twitterwebapp/GetFollower'" />				
+					</div>	
+					<div class="col-xs-2">	
+						<br>
+						<output  type="body">Get Followers</output>	
+					</div>
+				</form>
+
+<div class="col-xs-1"></div>
+				<!-- GetTrend Form -->
+
+				<form>
+					<div class="col-xs-1">	
+						<input type="button" class="btn btn-info btn-xs custom" value="Get Trend" onclick="window.location.href='http://localhost:8080/twitterwebapp/GetTrends'" />				
+					</div>	
+					<div class="col-xs-2">	
+						<br>
+						<output type="body">Get Trend</output>	
+					</div>
+				</form>
+
+
+
+
+				
+			</div>
+			
+
+			<br>
+			<br>
+			<h4 align="center" style="color:rgb(29, 161, 242)"> <strong>Get a Tweet and Find a Tweet</strong></h4>
+			<div class="row server-action-menu">
+				<form method="POST" action="PostTweet">
+					<div class="col-xs-3">	
+						<textarea class="form-control" rows="3" placeholder="Post a tweet..." name="PostT"></textarea>
+						<br>
+						<input class="btn btn-info btn-xs custom" value="Post" type="submit">
+					</div>
+
+				<div class="col-xs-3">	
+					<output type="body">Nothing post yet</output>	
+				</div>	
+				</form>
+				
+
+
+
+				<!-- Here -->
+
+
+				<!-- THere -->
+
+				<form method="POST" action="FindTweet">
+					<div class="col-xs-3">	
+						<textarea class="form-control" rows="3" placeholder="Find a tweet..." name="FindT"></textarea>
+						<br>
+						<input class="btn btn-info btn-xs custom" type="submit" value="Find">
+					</div>
+
+					<div class="col-xs-3">
+						<output type="body">Nothing found yet</output>
+					</div>	
+				</form>
+				
+			</div>
+			<br>
+			<br>
+			<h4 align="center" style="color:rgb(29, 161, 242)"> <strong>Send a message and login to different account</strong></h4>
+			<div class="row server-action-menu">
+				<form method="POST" action="Message">
+					<div class="col-xs-3">	
+						<textarea class="form-control" rows="1" cols="10" placeholder="User name" name="SendU"></textarea>
+						<br>
+						<textarea class="form-control" rows="3" placeholder="Message Body.." name="SendM"></textarea>
+						<br>
+						<input class="btn btn-info btn-xs custom" value="Send" type="submit">
+					</div>
+				</form>
+				<div class="col-xs-3">	
+					<output type="body">Nothing send yet!</output>	
+				</div>
+
+
+
+				<form method="post" action="SetKey">
+				<div class="row server-action-menu">
+					<div class="col-xs-6">
+						<div class="form-group">
+							<input type="password" class="form-control" rows="2" cols="3" placeholder="API Key" name="apiKeyT"></textarea>
+							<br>
+							<input type="password" class="form-control" id="apiSecretKey" rows="2" placeholder="API Secret Key" name="apiKeySeT"></textarea>
+							<br>
+							<input type="password" class="form-control" id="accessToken" rows="3" placeholder="Access Token" name="accessT"></textarea>
+							<br>
+							<input type="password" class="form-control" id="accessTokenScecret" rows="2" placeholder="Access Token Secret" name="accessSeT"></textarea>
+							<br>
+							<input class="btn btn-info btn-xs" type="submit" value="Set Twitter Key"/>
+						</div>
+					</div>
+				</div>
+			</form>
+
+				
+			</div>
+
+
+
+
+			<br>
+
+
+			
+
+		</div>	
+
+
+
+	</div>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>
